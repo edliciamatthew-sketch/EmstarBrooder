@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMSTAR BROODER - Kompor Semawar & Gasolek Pemanas Kandang</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e63946;
+            --primary-dark: #c1121f;
+            --secondary: #003049;
+            --accent: #f77f00;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1581093458791-9d33f472b4a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            background: var(--light);
+            transition: var(--transition);
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* Products Section */
+        .products {
+            background: var(--light-gray);
+        }
+
+        .product-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 200px;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .product-info p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: var(--light);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            background: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-details p,
+        .contact-details a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-details a:hover {
+            color: var(--primary);
+        }
+
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 100%;
+            min-height: 300px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-column p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-container">
+                <div class="logo">
+                    <div class="logo-icon"><i class="fas fa-fire"></i></div>
+                    <div class="logo-text">EMSTAR<span>BROODER</span></div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#about">Tentang</a></li>
+                        <li><a href="#products">Produk</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Kompor Semawar & Gasolek Pemanas Kandang</h1>
+                <p>EMSTAR BROODER menghadirkan produk kompor semawar dan gasolek pemanas kandang dengan kualitas
+                    terbaik, efisien, dan tahan lama untuk kebutuhan Anda.</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn">Lihat Produk</a>
+                    <a href="#contact" class="btn btn-outline">Hubungi Kami</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tentang EMSTAR BROODER</h2>
+                <p>Terpercaya dalam penyediaan kompor semawar dan gasolek pemanas kandang berkualitas tinggi</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="GASOLEK.jpeg" alt="Tentang EMSTAR BROODER">
+                </div>
+                <div class="about-text">
+                    <h2>Mengapa Memilih Produk Kami?</h2>
+                    <p>EMSTAR BROODER telah berpengalaman bertahun-tahun dalam memproduksi kompor semawar dan gasolek
+                        pemanas kandang yang aman, efisien, dan tahan lama. Produk kami telah digunakan oleh ribuan
+                        pelanggan di seluruh Indonesia.</p>
+                    <p>Kami berkomitmen untuk terus berinovasi dan meningkatkan kualitas produk demi kepuasan pelanggan.
+                    </p>
+
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Aman & Terpercaya</h3>
+                            <p>Produk kami dilengkapi dengan fitur keamanan terbaik</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3>Efisien Energi</h3>
+                            <p>Hemat bahan bakar dengan performa maksimal</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h3>Kualitas Terjamin</h3>
+                            <p>Dibuat dengan material berkualitas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Produk Kami</h2>
+                <p>Temukan berbagai produk kompor semawar dan gasolek pemanas kandang berkualitas dari EMSTAR BROODER
+                </p>
+            </div>
+
+            <div class="product-filters">
+                <button class="filter-btn active" data-filter="all">Semua Produk</button>
+                <button class="filter-btn" data-filter="semawar">Kompor Semawar</button>
+                <button class="filter-btn" data-filter="gasolek">Gasolek Pemanas</button>
+            </div>
+
+            <div class="product-grid">
+                <!-- Kompor Semawar Products -->
+                <!--  
+                <div class="product-card" data-category="semawar">
+                    <div class="product-image">
+                        <img src="KOMPOR_SEMAWAR.jpg" alt="Kompor Semawar EMSTAR Standard" onerror="this.src='https://images.unsplash.com/photo-1581093458791-9d33f472b4a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Kompor Semawar EMSTAR</h3>
+                        <p>Kompor semawar dengan desain praktis dan efisien, cocok untuk keperluan rumah tangga dan bisnis kecil.</p>
+                        <div class="product-price">Rp 320.000</div>
+                        <a href="https://id.shp.ee/ibCm5AL" class="btn" target="_blank">Beli Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="semawar">
+                    <div class="product-image">
+                        <img src="KOMPOR_SEMAWAR.jpg" alt="Kompor Semawar EMSTAR Premium" onerror="this.src='https://images.unsplash.com/photo-1581093458791-9d33f472b4a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Kompor Semawar EMSTAR</h3>
+                        <p>Kompor semawar dengan teknologi terbaru, lebih hemat bahan bakar dan tahan lama untuk penggunaan intensif.</p>
+                        <div class="product-price">Rp 450.000</div>
+                        <a href="https://id.shp.ee/ibCm5AL" class="btn" target="_blank">Beli Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="semawar">
+                    <div class="product-image">
+                        <img src="KOMPOR_SEMAWAR.jpg" alt="Kompor Semawar EMSTAR Pro" onerror="this.src='https://images.unsplash.com/photo-1581093458791-9d33f472b4a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Kompor Semawar EMSTAR</h3>
+                        <p>Kompor semawar dengan kapasitas besar dan fitur keamanan lengkap, ideal untuk bisnis kuliner dan industri.</p>
+                        <div class="product-price">Rp 520.000</div>
+                        <a href="https://id.shp.ee/ibCm5AL" class="btn" target="_blank">Beli Sekarang</a>
+                    </div>
+                </div>
+                -->
+                <!-- Gasolek Pemanas Kandang Products -->
+                <div class="product-card" data-category="gasolek">
+                    <div class="product-image">
+                        <img src="GASOLEKL.jpeg" alt="Gasolek Pemanas Kandang Standard"
+                            onerror="this.src='https://images.unsplash.com/photo-1542736667-069246bdbc6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Gasolek Pemanas Kandang Lengkap</h3>
+                        <p>Gasolek pemanas kandang infrared keramik gas burner EMSTAR. Efisien dan tahan lama. Bahan
+                            body dan tebeng dari steanless dof 201. Keramik 15x20cm. Sudah termasuk selang gas dan
+                            regulator.</p>
+                        <div class="product-price">Rp 880.000</div>
+                        <a href="https://id.shp.ee/ibCm5AL" class="btn" target="_blank">Beli Sekarang</a>
+                    </div>
+                </div>
+                <div class="product-card" data-category="gasolek">
+                    <div class="product-image">
+                        <img src="GASOLEK.jpeg" alt="Gasolek Pemanas Kandang Standard"
+                            onerror="this.src='https://images.unsplash.com/photo-1542736667-069246bdbc6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Gasolek Pemanas Kandang</h3>
+                        <p>Gasolek pemanas kandang infrared keramik gas burner EMSTAR. Efisien dan tahan lama. Bahan
+                            body dan tebeng dari steanless dof 201. Keramik 15x20cm jadikan pembakaran lebih baik dan
+                            maksimal.</p>
+                        <div class="product-price">Rp 750.000</div>
+                        <a href="https://id.shp.ee/ibCm5AL" class="btn" target="_blank">Beli Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="gasolek">
+                    <div class="product-image">
+                        <img src="SPUYER.jpg" alt="Gasolek Pemanas Kandang Premium"
+                            onerror="this.src='https://images.unsplash.com/photo-1542736667-069246bdbc6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Spuyer Kran Manual Gasolek Emstar</h3>
+                        <p>1 set spuyer gas keran manual T alumunium dan saringan udara kleman, cocok untuk pemanas
+                            Emstar, gasolek, igm, dll.</p>
+                        <div class="product-price">Rp 145.000</div>
+                        <a href="https://id.shp.ee/ibCm5AL" class="btn" target="_blank">Beli Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="gasolek">
+                    <div class="product-image">
+                        <img src="KERAMIK.jpg" alt="Gasolek Pemanas Kandang Pro"
+                            onerror="this.src='https://images.unsplash.com/photo-1542736667-069246bdbc6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Keramik Untuk Pemanas Kandang</h3>
+                        <p>Keramik pemanas berikut frameline untuk Emstar, gasolek, igm, rikte, mensana, dll. Ukuran 15
+                            x 20cm.</p>
+                        <div class="product-price">Rp 180.000</div>
+                        <a href="https://id.shp.ee/ibCm5AL" class="btn" target="_blank">Beli Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hubungi Kami</h2>
+                <p>Dapatkan informasi lebih lanjut tentang produk kompor semawar dan gasolek pemanas kandang EMSTAR
+                    BROODER</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Telepon</h3>
+                            <p>Hubungi kami untuk informasi produk</p>
+                            <a href="https://wa.me/628161678838">+62 816-1678-838</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>Kirim pertanyaan melalui email</p>
+                            <a href="mailto:Emstarbrooder@gmail.com">Emstarbrooder@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Lokasi</h3>
+                            <p>Kunjungi lokasi kami</p>
+                            <a href="https://maps.app.goo.gl/XdoJbT3n1dyyAYYs8?g_st=aw" target="_blank">Lihat di Google
+                                Maps</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Beli Online</h3>
+                            <p>Dapatkan produk kami di Shopee</p>
+                            <a href="https://id.shp.ee/ibCm5AL" target="_blank">Kunjungi Toko Shopee</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.8600907191567!2d106.7187573!3d-6.1494849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f81cb69fbc25%3A0x2cba8f155c2349c9!2sPemanas%20Kandang%20Emstar%2C%20Keramik%20Gasolec!5e0!3m2!1sid!2s!4v1763219809203!5m2!1sid!2s"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>EMSTAR BROODER</h3>
+                    <p>Produsen kompor semawar dan gasolek pemanas kandang berkualitas dengan pengalaman bertahun-tahun
+                        dalam memproduksi peralatan rumah tangga dan peternakan yang aman dan efisien.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/emstarbrooder?igsh=MWc4YTkxemc2Y2x1cA==" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://id.shp.ee/ibCm5AL" target="_blank"><i class="fas fa-shopping-cart"></i></a>
+                        <a href="mailto:Emstarbrooder@gmail.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Link Cepat</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#products">Produk</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Kontak</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://wa.me/628161678838"><i class="fas fa-phone"></i> +62 816-1678-838</a></li>
+                        <li><a href="mailto:Emstarbrooder@gmail.com"><i class="fas fa-envelope"></i>
+                                Emstarbrooder@gmail.com</a></li>
+                        <li><a href="https://maps.app.goo.gl/XdoJbT3n1dyyAYYs8?g_st=aw" target="_blank"><i
+                                    class="fas fa-map-marker-alt"></i> Lihat Lokasi</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p> EMSTAR BROODER. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Product filtering
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const filterValue = this.getAttribute('data-filter');
+
+                    productCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
